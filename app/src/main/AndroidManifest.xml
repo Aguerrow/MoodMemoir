@@ -12,15 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodMemoir"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MoodMemoir">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Add the following activities -->
+        <activity android:name=".OpeningActivity" />
+        <activity android:name=".SigninActivity" />
+        <activity android:name=".SignupActivity" />
+        <!-- ... other activities ... -->
+
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@
         android:background="@drawable/bg4">
 
         <TextView
-            android:id="@+id/txtPassword2"
+            android:id="@+id/txtPassword3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Confirm Password"
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.684" />
 
         <TextView
-            android:id="@+id/txtSignUp"
+            android:id="@+id/txtSignUp2"
             android:layout_width="233dp"
             android:layout_height="68dp"
             android:text="Sign Up"
@@ -71,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtEmail2"
             android:layout_width="320dp"
             android:layout_height="46dp"
             android:background="@drawable/note"
@@ -111,7 +111,8 @@
             android:textStyle="bold"
             android:typeface="serif"
             tools:layout_editor_absoluteX="102dp"
-            tools:layout_editor_absoluteY="615dp" />
+            tools:layout_editor_absoluteY="615dp"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
