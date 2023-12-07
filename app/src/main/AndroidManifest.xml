@@ -24,11 +24,10 @@
             </intent-filter>
         </activity>
 
-        <!-- Add the following activities -->
         <activity android:name=".OpeningActivity" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".SignupActivity" />
-        <!-- ... other activities ... -->
+        <activity android:name=".CalendarActivity" />
 
     </application>
 
