@@ -7,6 +7,9 @@ import java.util.Calendar
 
 class CalendarActivity : AppCompatActivity() {
 
+
+    //idk what to do na
+
     private lateinit var calendarView: calendarView
     private val noteCalendarManager = NoteCalendarManager() // Reuse your existing note manager
     override fun onCreate(savedInstanceState: Bundle?) {
