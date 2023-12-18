@@ -48,16 +48,19 @@
         android:layout_height="216dp"
         android:background="@drawable/note"
         android:gravity="top|left"
-        android:ems="10"
-        android:inputType="text"
         android:hint="Type here..."
+        android:inputType="textMultiLine"
+        android:maxLength="300"
+        android:lines="20"
+        android:maxLines="20"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.695" />
+
 
     <ImageButton
         android:id="@+id/imgAnxx"
