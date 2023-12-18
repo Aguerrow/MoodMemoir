@@ -19,6 +19,22 @@ class OpeningActivity : AppCompatActivity() {
     private val notesRef = database.getReference("notes")
     private val auth = FirebaseAuth.getInstance()
 
+    // Function to save emotions to Firebase
+    private fun saveEmotionToFirebase(emotionKey: String) {
+        val currentUser: FirebaseUser? = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+
+            emotionsRef.child(userId).child(emotionKey).setValue(true)
+                .addOnSuccessListener {
+                    // Emotion saved successfully
+                }
+                .addOnFailureListener {
+                    // Emotion save failed
+                }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.opening_main)
@@ -32,7 +48,8 @@ class OpeningActivity : AppCompatActivity() {
         val noteEditText: EditText = findViewById(R.id.edtNote)
 
         logButton.setOnClickListener {
-            saveDataToFirebase(noteEditText.text.toString())
+            val noteText = noteEditText.text.toString()
+            saveDataToFirebase(noteText)
             startActivity(calendarIntent)
         }
 
@@ -66,21 +83,6 @@ class OpeningActivity : AppCompatActivity() {
                 }
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun saveEmotionToFirebase(emotionKey: String) {
-        val currentUser: FirebaseUser? = auth.currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-
-            emotionsRef.child(userId).child(emotionKey).setValue(true)
-                .addOnSuccessListener {
-                    // Emotion saved successfully
-                }
-                .addOnFailureListener {
-                    // Emotion save failed
-                }
         }
     }
 
