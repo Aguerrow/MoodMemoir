@@ -1,8 +1,10 @@
 package com.example.moodmemoir
 
+import com.example.moodmemoir.OpeningActivity
 import android.content.Intent
 import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -12,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
+import java.util.Calendar
 
 class OpeningActivity : AppCompatActivity() {
     private val database = FirebaseDatabase.getInstance()
@@ -19,19 +22,27 @@ class OpeningActivity : AppCompatActivity() {
     private val notesRef = database.getReference("notes")
     private val auth = FirebaseAuth.getInstance()
 
+    private var selectedEmotion: String = ""
+
     // Function to save emotions to Firebase
     private fun saveEmotionToFirebase(emotionKey: String) {
-        val currentUser: FirebaseUser? = auth.currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
+        selectedEmotion = emotionKey
+        if (selectedEmotion.isNotEmpty()) {
+            val currentUser: FirebaseUser? = auth.currentUser
+            if (currentUser != null) {
+                val userId = currentUser.uid
 
-            emotionsRef.child(userId).child(emotionKey).setValue(true)
-                .addOnSuccessListener {
-                    // Emotion saved successfully
-                }
-                .addOnFailureListener {
-                    // Emotion save failed
-                }
+                emotionsRef.child(userId).child(emotionKey).setValue(true)
+                    .addOnSuccessListener {
+                        // Emotion saved successfully
+                    }
+                    .addOnFailureListener {
+                        // Emotion save failed
+                    }
+            }
+        } else {
+            // Log or print a message indicating that no emotion is selected
+            Log.d("EmotionSelection", "No emotion selected")
         }
     }
 
@@ -49,8 +60,13 @@ class OpeningActivity : AppCompatActivity() {
 
         logButton.setOnClickListener {
             val noteText = noteEditText.text.toString()
-            saveDataToFirebase(noteText)
-            startActivity(calendarIntent)
+            if (isLoggingAllowed()) {
+                saveDataToFirebase(noteText)
+                saveEmotionsToFirebase()
+                startActivity(calendarIntent)
+            } else {
+                Toast.makeText(this, "Logging is only allowed for the current day", Toast.LENGTH_SHORT).show()
+            }
         }
 
         imgAnxx.setOnClickListener { saveEmotionToFirebase("anxiety") }
@@ -84,6 +100,39 @@ class OpeningActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun saveEmotionsToFirebase() {
+        val currentUser: FirebaseUser? = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+
+            // Set emotions to true if selected
+            emotionsRef.child(userId).child("happiness").setValue(true)
+            emotionsRef.child(userId).child("sadness").setValue(true)
+            emotionsRef.child(userId).child("anxiety").setValue(true)
+            emotionsRef.child(userId).child("anger").setValue(true)
+                .addOnSuccessListener {
+                    // Emotions saved successfully
+                }
+                .addOnFailureListener {
+                    // Emotions save failed
+                }
+        }
+    }
+
+    private fun isLoggingAllowed(): Boolean {
+        val calendar = Calendar.getInstance()
+        val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+
+        // Assuming that the DatePicker is used for logging
+        // You can replace this with the actual DatePicker used in your layout
+        // and extract the selected day accordingly
+        // For simplicity, let's assume selectedDay is the selected day from DatePicker
+        // Replace this with your actual implementation
+        val selectedDay = currentDay
+
+        return currentDay == selectedDay
     }
 
     private fun setButtonStateList(imageButton: ImageButton, normal: Int, pressed: Int) {

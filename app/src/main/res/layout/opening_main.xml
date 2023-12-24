@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg2">
 
+
+    <EditText
+        android:id="@+id/edtNote"
+        android:layout_width="342dp"
+        android:layout_height="216dp"
+        android:background="@drawable/note"
+        android:gravity="top|left"
+        android:hint="Type here..."
+        android:inputType="textMultiLine"
+        android:lines="20"
+        android:maxLength="300"
+        android:maxLines="20"
+        android:textColor="@color/black"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603" />
+
     <Button
         android:id="@+id/btnLog"
         android:layout_width="214dp"
@@ -21,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintVertical_bias="0.846" />
 
     <EditText
         android:id="@+id/edtHow"
@@ -40,41 +61,7 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.173" />
-
-    <EditText
-        android:id="@+id/edtNote"
-        android:layout_width="342dp"
-        android:layout_height="216dp"
-        android:background="@drawable/note"
-        android:gravity="top|left"
-        android:hint="Type here..."
-        android:inputType="textMultiLine"
-        android:maxLength="300"
-        android:lines="20"
-        android:maxLines="20"
-        android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
-
-
-    <ImageButton
-        android:id="@+id/imgAnxx"
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
-        app:srcCompat="@drawable/anxious" />
+        app:layout_constraintVertical_bias="0.098" />
 
     <ImageButton
         android:id="@+id/imgSadd"
@@ -87,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
+        app:layout_constraintVertical_bias="0.296"
         app:srcCompat="@drawable/sad" />
 
     <ImageButton
@@ -101,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
+        app:layout_constraintVertical_bias="0.296"
         app:srcCompat="@drawable/happy" />
 
     <ImageButton
@@ -115,7 +102,22 @@
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
+        app:layout_constraintVertical_bias="0.296"
         app:srcCompat="@drawable/angry" />
+
+    <ImageButton
+        android:id="@+id/imgAnxx"
+        android:layout_width="91dp"
+        android:layout_height="84dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.296"
+        app:srcCompat="@drawable/anxious" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
